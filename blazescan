@@ -583,7 +583,8 @@ while getopts ":ahltu:d:w:UARfi:mnN" opt; do
 		if [ $(echo $addr| wc -c) = 1 ]; then
 			echo -e "$yellow No Email address specified, please set up in /usr/local/scan/blazescand.conf $whi"
 		else
-			echo -e "Subject: Blazescan malware hits report" > $envelope
+			echo -e "Subject: Blazescan malware hits report for $HOSTNAME" > $envelope
+			echo -e "" >> $envelope
 	        	list >> $envelope
 			echo -e "Sending report to $addr\n\n"
 			cat $envelope | sendmail $addr
